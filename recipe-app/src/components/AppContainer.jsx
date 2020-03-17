@@ -18,6 +18,7 @@ class AppContainer extends Component{
     render(){
         return(
             <div>
+                
                 <Header name = "Autumn"/>
                 <RecipeForm updateRecipeArray = {this.updateRecipeArray}/>
                 <RecipeDisplay recipeArray = {this.state.recipeArray}/>

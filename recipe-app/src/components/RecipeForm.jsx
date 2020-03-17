@@ -13,7 +13,7 @@ class RecipeForm extends Component {
 
     handleSubmission = (event) => {
         event.preventDefault();
-        this.setState({ recipeTitle: " ", recipeMakeTime: " ", recipeServingSize: " ", });
+        
         this.state.recipeArray.push(
             {
                 title: this.state.recipeTitle,
@@ -25,6 +25,7 @@ class RecipeForm extends Component {
         })
         console.log(this.state.recipeArray)
         this.props.updateRecipeArray(this.state.recipeArray)
+        this.setState({ recipeTitle: " ", recipeMakeTime: " ", recipeServingSize: " ", });
     }
     handleChange = (event) => {
         if (event.target.name === "recipeTitle") {
@@ -43,7 +44,7 @@ class RecipeForm extends Component {
                         <legend>Add a New Recipe</legend>
                         <div className="formGroup">
                             <label htmlFor="recipeTitle">Title : </label>
-                            <input type="text" name="recipeTitle" onChange={this.handleChange} value={this.state.recipeTitle} />
+                            <input type="text" id="recipeTitle" name="recipeTitle" onChange={this.handleChange} value={this.state.recipeTitle} />
                         </div>
 
                         <div className="formGroup">
