@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+// component to display form to add a recipe to the recipe display component
 class RecipeForm extends Component {
     constructor(props) {
         super(props);
+        // define initial state
         this.state = {
             recipeTitle: "",
             recipeMakeTime: "",
@@ -11,22 +12,26 @@ class RecipeForm extends Component {
         }
     }
 
+    // event handler for when form is submitted
     handleSubmission = (event) => {
-        event.preventDefault();
-        
+        event.preventDefault(); // keep page from reloading
+        // add form values to recipe array
         this.state.recipeArray.push(
             {
                 title: this.state.recipeTitle,
                 makeTime: this.state.recipeMakeTime,
                 servingSize: this.state.recipeServingSize,
             })
+        // update recipe array value globally
         this.setState({
             recipeArray: this.state.recipeArray
         })
-        console.log(this.state.recipeArray)
-        this.props.updateRecipeArray(this.state.recipeArray)
+        // pass recipe array up to parent via callback function
+        this.props.updateRecipeArray(this.state.recipeArray);
+        // reset form field values
         this.setState({ recipeTitle: " ", recipeMakeTime: " ", recipeServingSize: " ", });
     }
+    // event handler to conditionally update state property based on input field
     handleChange = (event) => {
         if (event.target.name === "recipeTitle") {
             this.setState({ recipeTitle: event.target.value })
@@ -36,6 +41,7 @@ class RecipeForm extends Component {
             this.setState({ recipeServingSize: event.target.value })
         }
     }
+    // render form
     render() {
         return (
             <div>

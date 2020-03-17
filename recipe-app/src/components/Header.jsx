@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+// component to display page title
 class Header extends Component{
     render(){
         return(
